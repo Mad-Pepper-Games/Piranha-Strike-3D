@@ -25,6 +25,10 @@ public class InputManager : Singleton<InputManager>
 
     private void FixedUpdate()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            TapInput();
+        }
         if (Input.touchCount == 1)
         {
             Touch touch = Input.GetTouch(0);

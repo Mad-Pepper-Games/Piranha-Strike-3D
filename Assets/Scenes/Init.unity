@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04615834, g: 0.5519655, b: 0.8302261, a: 1}
+  m_IndirectSpecularColor: {r: 0.04615834, g: 0.5532154, b: 0.8302261, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -140,6 +140,7 @@ GameObject:
   - component: {fileID: 113075791}
   - component: {fileID: 113075793}
   - component: {fileID: 113075792}
+  - component: {fileID: 113075794}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -293,3 +294,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackgroundMaterial: {fileID: 2100000, guid: 959f96f9c6985474383fb44f604286ad, type: 2}
+--- !u!114 &113075794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113075784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55243499d9a3ad641af03a8313376803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FloatDictionary:
+    keyData:
+    - ClusterSpeedFactor
+    - ClusterRotationFactor
+    - IndividualSpeedFactor
+    - IndividualRotationFactor
+    - ClusterScatterFactor
+    - ObstacleSpeedFactor
+    - ObstacleDetectionRange
+    valueData:
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+  Color32Dictionary:
+    keyData:
+    - GoalObjectColor
+    - ObstacleColor
+    - ClusterAreaColor
+    - IndividualColor
+    - NeutralIndividualColor
+    valueData:
+    - serializedVersion: 2
+      rgba: 16843009
+    - serializedVersion: 2
+      rgba: 16843009
+    - serializedVersion: 2
+      rgba: 16843009
+    - serializedVersion: 2
+      rgba: 16843009
+    - serializedVersion: 2
+      rgba: 16843009
+  Vector3Dictionary:
+    keyData:
+    - CameraPositionOffset
+    - CameraLookAtOffset
+    valueData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}

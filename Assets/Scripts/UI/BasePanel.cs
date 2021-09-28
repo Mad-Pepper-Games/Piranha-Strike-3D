@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Sirenix.OdinInspector;
 using DG.Tweening;
-
+using UnityEngine.UI;
 public class BasePanel : MonoBehaviour
 {
     public bool IsActive;
