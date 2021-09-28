@@ -11,25 +11,26 @@ public class ClusterController : MonoBehaviour
     private Vector3 LastPivotObjectPosition;
     private Vector3 LastDirection;
 
-    private float SpeedValue = 4f;
+    private float SpeedValue = 1.5f;
 
     public float ClusterAreaRange = 2f;
 
     private void Start()
     {
         CalculateLastValues();
-        IndividualMovementManager.Instance.PivotObject = gameObject;
+        IndividualMovementManager.Instance.PivotObject = MovementPivotObject;
     }
 
     public void Move()
     {
-        transform.position = Vector3.Lerp(transform.position, transform.position + LastDirection, Time.fixedDeltaTime * (SpeedValue + GenericDebugManager.Instance.FloatDictionary["ClusterSpeedFactor"]));
+        //transform.position = Vector3.Lerp(transform.position, transform.position + LastDirection, Time.fixedDeltaTime * (SpeedValue + GenericDebugManager.Instance.FloatDictionary["ClusterSpeedFactor"]));
+        transform.position = transform.position + transform.forward * 0.01f * (SpeedValue + GenericDebugManager.Instance.FloatDictionary["ClusterSpeedFactor"]);
     }
 
     public void MovementPivot()
     {
         MovementPivotHolder.transform.forward = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
-        MovementPivotObject.transform.localPosition = new Vector3(InputManager.Instance.Joystick.Direction.x,0, InputManager.Instance.Joystick.Direction.y);
+        MovementPivotObject.transform.localPosition = new Vector3(InputManager.Instance.Joystick.Direction.x,0, InputManager.Instance.Joystick.Direction.y) * 3;
     }
 
     private void CalculateLastValues()
@@ -40,6 +41,8 @@ public class ClusterController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!LevelManager.Instance.IsLevelStarted) return;
+
         MovementPivot();
         if (MovementPivotObject.transform.localPosition != Vector3.zero)
         {

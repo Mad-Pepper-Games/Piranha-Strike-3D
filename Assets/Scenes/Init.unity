@@ -310,14 +310,12 @@ MonoBehaviour:
   FloatDictionary:
     keyData:
     - ClusterSpeedFactor
-    - ClusterRotationFactor
     - IndividualSpeedFactor
     - IndividualRotationFactor
     - ClusterScatterFactor
     - ObstacleSpeedFactor
     - ObstacleDetectionRange
     valueData:
-    - 1
     - 1
     - 1
     - 1
@@ -364,3 +362,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1459bdecb48dd045a0191dc590ad4f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PivotObject: {fileID: 0}
+  Individuals: []
