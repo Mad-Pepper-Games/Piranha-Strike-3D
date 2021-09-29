@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1277247950875354936}
   - component: {fileID: 1277247950875354937}
   - component: {fileID: 498342566432742192}
+  - component: {fileID: 1277247951555346389}
   m_Layer: 0
   m_Name: Individual
   m_TagString: Untagged
@@ -192,6 +193,21 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+--- !u!114 &1277247951555346389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277247950875354939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e74324516ca62d74fa7971d151e96e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CinemachineTargetGroup: {fileID: 0}
+  Weigth: 1
+  Radius: 0.2
 --- !u!1 &1892732263510776887
 GameObject:
   m_ObjectHideFlags: 0
