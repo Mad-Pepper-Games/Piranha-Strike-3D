@@ -81,12 +81,6 @@ public class IndividualMovementController : MonoBehaviour
         return vector3;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(InitialTarget(), 0.1f);
-        Gizmos.DrawLine(transform.position, transform.position + transform.forward * 0.4f);
-    }
 
     private void FixedUpdate()
     {
