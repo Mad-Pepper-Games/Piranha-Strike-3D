@@ -22,6 +22,7 @@ public class SkinButtonController : MonoBehaviour
         {
             IsActive = true;
             SkinText.SetText("UNLOCKED");
+            ChangeActiveState();
         }
     }
 
@@ -55,6 +56,7 @@ public class SkinButtonController : MonoBehaviour
                 CharacterSkinManager.Instance.ChangeSkin(Skin);
                 PlayerPrefs.SetInt(IDKey, 1);
             }
-        }          
+        }
+        ChangeActiveState();
     }
 }

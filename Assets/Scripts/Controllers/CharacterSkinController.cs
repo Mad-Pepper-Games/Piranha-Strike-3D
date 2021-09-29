@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 public class CharacterSkinController : SerializedMonoBehaviour
-{   
+{
+    public void Start()
+    {
+        CharacterSkinManager.Instance.ChangeSkin(CharacterSkinManager.Instance.CurrentSkin);
+    }
+
     public Dictionary<Skin, GameObject> SkinDictionary = new Dictionary<Skin, GameObject>();
     Skin localCurrentSkin = Skin.Default;
     private void OnEnable()
@@ -18,11 +23,8 @@ public class CharacterSkinController : SerializedMonoBehaviour
 
     public void ChangeSkin()
     {
-        if(localCurrentSkin != Skin.Default)
-            SkinDictionary[localCurrentSkin].SetActive(false);
-
-        if (CharacterSkinManager.Instance.CurrentSkin != Skin.Default)
-            SkinDictionary[CharacterSkinManager.Instance.CurrentSkin].SetActive(true);
+      SkinDictionary[localCurrentSkin].SetActive(false);
+      SkinDictionary[CharacterSkinManager.Instance.CurrentSkin].SetActive(true);
 
         localCurrentSkin = CharacterSkinManager.Instance.CurrentSkin;
     }

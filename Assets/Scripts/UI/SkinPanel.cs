@@ -7,6 +7,7 @@ public class SkinPanel : BasePanel
 {
     public Button PanelOpenButton;
     public Button ADButton;
+    public Button StartButton;
     public bool IsOpen;
     private void OnEnable()
     {
@@ -15,6 +16,7 @@ public class SkinPanel : BasePanel
         LevelManager.Instance.OnLevelStarted.AddListener(Deactivate);
         PanelOpenButton.onClick.AddListener(Slide);
         ADButton.onClick.AddListener(RewardAd);
+        StartButton.onClick.AddListener(LevelManager.Instance.StartLevel);
     }
 
     private void OnDisable()
@@ -24,6 +26,7 @@ public class SkinPanel : BasePanel
         LevelManager.Instance.OnLevelStarted.RemoveListener(Deactivate);
         PanelOpenButton.onClick.RemoveListener(Slide);
         ADButton.onClick.RemoveListener(RewardAd);
+        StartButton.onClick.RemoveListener(LevelManager.Instance.StartLevel);
     }
 
     public void Slide()

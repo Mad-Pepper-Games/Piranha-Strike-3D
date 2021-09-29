@@ -27,7 +27,7 @@ public class InputManager : Singleton<InputManager>
     {
         if (Input.GetMouseButtonDown(0))
         {
-            TapInput();
+            //TapInput();
         }
         if (Input.touchCount == 1)
         {
@@ -73,7 +73,7 @@ public class InputManager : Singleton<InputManager>
                 }
                 else
                 {   
-                    TapInput();
+                    //TapInput();
                 }
             }
             //firstTouchPosition = Vector2.zero;
