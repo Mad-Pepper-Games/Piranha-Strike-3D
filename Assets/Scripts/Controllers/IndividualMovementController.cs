@@ -121,6 +121,7 @@ public class IndividualMovementController : MonoBehaviour
         return vector3;
     }
 
+
     private void FixedUpdate()
     {
         if (!LevelManager.Instance.IsLevelStarted) return;
