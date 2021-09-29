@@ -19,6 +19,7 @@ public class CharacterSkinManager : Singleton<CharacterSkinManager>
 public enum Skin
 {
     Default,
-    Cook,
-    Trashbin
+    GreenPiranha,
+    RedPirana,
+    OrangePiranha,
 }
