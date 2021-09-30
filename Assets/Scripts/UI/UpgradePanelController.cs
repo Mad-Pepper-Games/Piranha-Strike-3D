@@ -21,6 +21,10 @@ public class UpgradePanelController : MonoBehaviour
             SpeedCostText.SetText(PlayerPrefs.GetInt("SpeedCost", 50 ).ToString());
             FishCostText.SetText(PlayerPrefs.GetInt("FishCost", 100 ).ToString());
 
+            SpeedCost = PlayerPrefs.GetInt("SpeedCost", 50);
+            FishCost = PlayerPrefs.GetInt("FishCost", 100);
+
+
     }
     void Update()
     {
@@ -34,7 +38,7 @@ public class UpgradePanelController : MonoBehaviour
     }
     public void UpgradeSpeed()
     {
-        if (PlayerPrefs.GetInt("Coin") > SpeedCost)
+        if (PlayerPrefs.GetInt("Coin") >= SpeedCost)
         {
             PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") - SpeedCost);
             UpgradeManager.Instance.SpeedUpgrade ++ ;
@@ -45,9 +49,10 @@ public class UpgradePanelController : MonoBehaviour
     }
     public void UpgradeFishNumber()
     {
-        if (PlayerPrefs.GetInt("Coin") > FishCost)
+        if (PlayerPrefs.GetInt("Coin") >= FishCost)
         {
             PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin") - FishCost);
+
             UpgradeManager.Instance.FishStarterCount ++ ;
             FishCost = FishCost + FishCostChangeRate;
             FishCostText.SetText(FishCost.ToString());
