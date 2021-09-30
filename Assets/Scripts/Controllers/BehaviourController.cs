@@ -5,7 +5,7 @@ using UnityEngine;
 public class BehaviourController : MonoBehaviour
 {
     public List <Behaviour> AIBehaviour = new List<Behaviour>();
-    private int listIndex;
+    public int ListIndex;
     public List<float> ActionDuration = new List<float>();
 
     private void OnEnable()
@@ -23,15 +23,15 @@ public class BehaviourController : MonoBehaviour
     public void Behave()
     {
         BehaviourManager.Instance.BehaviourTarget = gameObject;
-        BehaviourManager.Instance.BehaviourDictionary[AIBehaviour[listIndex]].Invoke(gameObject , ActionDuration[listIndex]);
+        BehaviourManager.Instance.BehaviourDictionary[AIBehaviour[ListIndex]].Invoke(gameObject , ActionDuration[ListIndex]);
     }
 
     public void BehaviourBrain(GameObject target, float duration)
     {
         if (target == gameObject)
         {
-            listIndex++;
-            if (listIndex >= AIBehaviour.Count)
+            ListIndex++;
+            if (ListIndex >= AIBehaviour.Count)
             {
                 return;
             }
