@@ -44,6 +44,8 @@ GameObject:
   - component: {fileID: 1277247950875354937}
   - component: {fileID: 498342566432742192}
   - component: {fileID: 1277247951555346389}
+  - component: {fileID: 3489999023086794131}
+  - component: {fileID: 1740522975878884736}
   m_Layer: 0
   m_Name: Individual
   m_TagString: Untagged
@@ -94,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce4e3e742ec415446bf598c3a0aa9dc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackTargets: []
 --- !u!114 &498342566432742192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +211,44 @@ MonoBehaviour:
   CinemachineTargetGroup: {fileID: 0}
   Weigth: 1
   Radius: 0.2
+--- !u!135 &3489999023086794131
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277247950875354939}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1740522975878884736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277247950875354939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 198a8fe2be6aef147895ef9a81d67122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Individuals:
+  - {fileID: 8451028841462203243}
+  - {fileID: 1892732263510776887}
+  - {fileID: 863528977645911483}
+  - {fileID: 5471893946618091151}
+  IndividualDictionary:
+    keyData:
+    - {fileID: 8451028841462203243}
+    - {fileID: 1892732263510776887}
+    - {fileID: 863528977645911483}
+    - {fileID: 5471893946618091151}
+    valueData: 00000000
+  AnimatonRange: {x: 0.3, y: 0.7}
 --- !u!1 &1892732263510776887
 GameObject:
   m_ObjectHideFlags: 0

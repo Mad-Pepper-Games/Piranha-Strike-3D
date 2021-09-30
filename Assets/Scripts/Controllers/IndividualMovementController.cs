@@ -12,7 +12,10 @@ public class IndividualMovementController : MonoBehaviour
 
     public List<GameObject> AttackTargets = new List<GameObject>();
 
-    private float distanceToAttackTarget;
+    private float distanceToAttackTarget = 9999;
+
+    private GameObject Target;
+
     void OnEnable()
     {
         if (!IndividualMovementManager.Instance.Individuals.Contains(gameObject))
@@ -21,7 +24,7 @@ public class IndividualMovementController : MonoBehaviour
 
     public void Move()
     {
-        transform.position = Vector3.Lerp(transform.position, transform.position + (transform.forward * (speedValue + GenericDebugManager.Instance.FloatDictionary["IndividualSpeedFactor"])), Time.fixedDeltaTime );
+        transform.position = Vector3.Lerp(transform.position, transform.position + (transform.forward * (speedValue + (UpgradeManager.Instance.SpeedUpgrade/5) + GenericDebugManager.Instance.FloatDictionary["IndividualSpeedFactor"])), Time.fixedDeltaTime );
     }
 
     public void CalculateCenterPoint()
@@ -63,6 +66,7 @@ public class IndividualMovementController : MonoBehaviour
 
     public void AttackMovement()
     {
+        distanceToAttackTarget = 9999;
         foreach (GameObject target in AttackTargets)
         {
             if(target == null)
@@ -74,19 +78,24 @@ public class IndividualMovementController : MonoBehaviour
             if(distanceToAttackTarget > Vector3.Distance(target.transform.position, transform.position))
             {
                 distanceToAttackTarget = Vector3.Distance(target.transform.position, transform.position);
+                Target = target;
             }
             else
             {
                 continue;
             }
         }
+        if(Target != null)
+            centerPoint = Target.transform.position;
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((centerPoint - transform.position).normalized), Time.fixedDeltaTime  * 1.25f * (rotateValue + GenericDebugManager.Instance.FloatDictionary["IndividualRotationFactor"]));
     }
 
     public void StandartMovement()
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 1f))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, (1f + GenericDebugManager.Instance.FloatDictionary["ObstacleDetectionRange"])))
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((-hit.point + transform.position).normalized), Time.fixedDeltaTime * (rotateValue * 2 + GenericDebugManager.Instance.FloatDictionary["IndividualRotationFactor"]));
         }
@@ -125,7 +134,7 @@ public class IndividualMovementController : MonoBehaviour
     private void FixedUpdate()
     {
         if (!LevelManager.Instance.IsLevelStarted) return;
-        CalculateCenterPoint();
+       
 
         if(AttackTargets.Count > 0)
         {
@@ -134,6 +143,7 @@ public class IndividualMovementController : MonoBehaviour
         else
         {
             StandartMovement();
+            CalculateCenterPoint();
         }
         Move();
     }

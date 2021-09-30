@@ -10,12 +10,12 @@ public class SpawnController : MonoBehaviour
 
     private void OnEnable()
     {
-        localFishValue = 1;
-        Spawn();
+        LevelManager.Instance.OnLevelStarted.AddListener(Spawn);
     }
 
     public void Spawn()
     {
+        localFishValue = 1 + UpgradeManager.Instance.FishStarterCount;
         for (int i = 0; i < localFishValue; i++)
         {
             Vector3 RandomPos = Random.insideUnitSphere * SpawnArea;

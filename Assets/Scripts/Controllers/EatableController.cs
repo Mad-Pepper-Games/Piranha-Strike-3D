@@ -9,7 +9,7 @@ public class EatableController : MonoBehaviour
     {
         if (other.GetComponent<IndividualMovementController>())
         {
-            Health -= 0.05f;
+            Health -= 0.005f;
             Health = Mathf.Clamp(Health, 0, Health);
         }
     }

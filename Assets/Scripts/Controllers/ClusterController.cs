@@ -24,7 +24,7 @@ public class ClusterController : MonoBehaviour
     public void Move()
     {
         //transform.position = Vector3.Lerp(transform.position, transform.position + LastDirection, Time.fixedDeltaTime * (SpeedValue + GenericDebugManager.Instance.FloatDictionary["ClusterSpeedFactor"]));
-        transform.position = transform.position + transform.forward * 0.01f * (SpeedValue + GenericDebugManager.Instance.FloatDictionary["ClusterSpeedFactor"]);
+        transform.position = transform.position + transform.forward * 0.01f * (SpeedValue + (UpgradeManager.Instance.SpeedUpgrade / 2) + GenericDebugManager.Instance.FloatDictionary["ClusterSpeedFactor"]);
     }
 
     public void MovementPivot()
@@ -53,7 +53,7 @@ public class ClusterController : MonoBehaviour
         }
         foreach (GameObject individual in IndividualMovementManager.Instance.Individuals)
         {
-            if(Vector3.Distance(individual.transform.position,transform.position) > 6f)
+            if(Vector3.Distance(individual.transform.position,transform.position) > 3f)
             {
                 goto Leave;
             }
