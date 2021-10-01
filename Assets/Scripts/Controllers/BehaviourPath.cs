@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,20 +9,29 @@ public class BehaviourPath : MonoBehaviour
 
     public int PositionIndex;
 
+    private void Start()
+    {
+        for (int i = 0; i < Positions.Count; i++)
+        {
+            Positions[i] += transform.position;
+        }
+        FallingPosition += transform.position;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
 
         for (int i = 0; i < Positions.Count; i++)
         {
-            Gizmos.DrawSphere(Positions[i], 0.2f);
+            Gizmos.DrawSphere(transform.position+Positions[i], 0.2f);
             if(i+1 < Positions.Count)
             {
-                Gizmos.DrawLine(Positions[i], Positions[i + 1]);
+                Gizmos.DrawLine(transform.position + Positions[i], transform.position + Positions[i + 1]);
             }
         }
         Gizmos.color = Color.green;
-        Gizmos.DrawSphere(FallingPosition, 0.2f);
-        Gizmos.DrawLine(FallingPosition, Positions[Positions.Count-1]);
+        Gizmos.DrawSphere(transform.position + FallingPosition, 0.2f);
+        Gizmos.DrawLine(transform.position + FallingPosition, transform.position + Positions[Positions.Count-1]);
     }
 }

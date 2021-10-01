@@ -53,7 +53,7 @@ public class ClusterController : MonoBehaviour
         }
         foreach (GameObject individual in IndividualMovementManager.Instance.Individuals)
         {
-            if(Vector3.Distance(individual.transform.position,transform.position) > 3f)
+            if(Vector3.Distance(individual.transform.position,transform.position) > 7f)
             {
                 goto Leave;
             }

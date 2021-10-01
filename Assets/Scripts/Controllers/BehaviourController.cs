@@ -11,13 +11,13 @@ public class BehaviourController : MonoBehaviour
     private void OnEnable()
     {
         BehaviourManager.Instance.FinishEvent.AddListener(BehaviourBrain);
-        Behave();
+        LevelManager.Instance.OnLevelStarted.AddListener(Behave);
     }
 
     private void OnDisable()
     {
         BehaviourManager.Instance.FinishEvent.RemoveListener(BehaviourBrain);
-
+        LevelManager.Instance.OnLevelStarted.RemoveListener(Behave);
     }
 
     public void Behave()
