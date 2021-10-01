@@ -6,7 +6,7 @@ public class IndividualMovementManager : Singleton<IndividualMovementManager>
 {
     public GameObject PivotObject;
     public List<GameObject> Individuals = new List<GameObject>();
-    
+    public GameObject Finish;
 
     private void OnEnable()
     {
