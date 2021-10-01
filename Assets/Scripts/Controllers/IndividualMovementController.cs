@@ -21,6 +21,11 @@ public class IndividualMovementController : MonoBehaviour
         if (!IndividualMovementManager.Instance.Individuals.Contains(gameObject))
             IndividualMovementManager.Instance.Individuals.Add(gameObject);
     }
+    void OnDisable()
+    {
+        if (IndividualMovementManager.Instance.Individuals.Contains(gameObject))
+            IndividualMovementManager.Instance.Individuals.Remove(gameObject);
+    }
 
     public void Move()
     {
