@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 498342566432742192}
   - component: {fileID: 1277247951555346389}
   - component: {fileID: 3489999023086794131}
+  - component: {fileID: 4269399086714798405}
   - component: {fileID: 1740522975878884736}
   m_Layer: 0
   m_Name: Individual
@@ -80,7 +81,7 @@ BoxCollider:
   m_GameObject: {fileID: 1277247950875354939}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -220,10 +221,25 @@ SphereCollider:
   m_GameObject: {fileID: 1277247950875354939}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 3.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4269399086714798405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277247950875354939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a8de227cf39ff4da07624633fb4af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Colliders:
+  - {fileID: 3489999023086794131}
+  - {fileID: 1277247950875354936}
 --- !u!114 &1740522975878884736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +307,6 @@ GameObject:
   - component: {fileID: 8452193615396965432}
   - component: {fileID: 1705344032015208946}
   - component: {fileID: 3750235148765570570}
-  - component: {fileID: 5294032371748987000}
   m_Layer: 0
   m_Name: GreenPirhana
   m_TagString: Untagged
@@ -362,19 +377,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5294032371748987000
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2314495926081709717}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2394357369258855616
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +388,6 @@ GameObject:
   - component: {fileID: 8559984250186242415}
   - component: {fileID: 5888529761972220197}
   - component: {fileID: 589250539915542837}
-  - component: {fileID: 7557198996515513874}
   m_Layer: 0
   m_Name: Default
   m_TagString: Untagged
@@ -457,19 +458,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7557198996515513874
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2394357369258855616}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5471893946618091151
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +500,6 @@ GameObject:
   - component: {fileID: 5423191820510674354}
   - component: {fileID: 8698885863889120387}
   - component: {fileID: 1276429908126158740}
-  - component: {fileID: 3151032827133441385}
   m_Layer: 0
   m_Name: OrangePirhana
   m_TagString: Untagged
@@ -583,19 +570,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3151032827133441385
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6621181865582080078}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7752834074128460386
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +581,6 @@ GameObject:
   - component: {fileID: 6074416790439482758}
   - component: {fileID: 8384730532242293933}
   - component: {fileID: 2206239394376132922}
-  - component: {fileID: 3409319853408007932}
   m_Layer: 0
   m_Name: RedPirhana
   m_TagString: Untagged
@@ -678,19 +651,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3409319853408007932
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7752834074128460386}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8451028841462203243
 GameObject:
   m_ObjectHideFlags: 0
