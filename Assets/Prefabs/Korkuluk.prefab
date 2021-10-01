@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7241437285809808716
+--- !u!1 &936422866412751392
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8314318143629432311}
-  - component: {fileID: 5151076327881750145}
-  - component: {fileID: 3290935017445570227}
+  - component: {fileID: 7090646325363258588}
+  - component: {fileID: 8738787926161484814}
+  - component: {fileID: 4118518813283078805}
   m_Layer: 0
-  m_Name: Donnut House
+  m_Name: Korkuluk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8314318143629432311
+--- !u!4 &7090646325363258588
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7241437285809808716}
+  m_GameObject: {fileID: 936422866412751392}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0.8422498, y: 1.565183, z: -1.8884258}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalPosition: {x: 1.1088344, y: 0.45555326, z: 0.10381791}
+  m_LocalScale: {x: 0.27536175, y: 0.27536175, z: 0.27536175}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5151076327881750145
+--- !u!33 &8738787926161484814
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7241437285809808716}
-  m_Mesh: {fileID: -3819890080791782088, guid: 31f7e938669622a459ce004f3742132b, type: 3}
---- !u!23 &3290935017445570227
+  m_GameObject: {fileID: 936422866412751392}
+  m_Mesh: {fileID: -7327021651266779009, guid: 31f7e938669622a459ce004f3742132b, type: 3}
+--- !u!23 &4118518813283078805
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7241437285809808716}
+  m_GameObject: {fileID: 936422866412751392}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,16 +59,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6c0196179ac77ad46a1ce2d0c44d97f7, type: 2}
-  - {fileID: 2100000, guid: 72a0a2bc82cfd7e44a333ea13df3375f, type: 2}
-  - {fileID: 2100000, guid: 9e65d5d22f7ad694c96806fe6ca196f6, type: 2}
-  - {fileID: 2100000, guid: 4845bdd74b7a9f34b98d6ccb6a74ce51, type: 2}
-  - {fileID: 2100000, guid: cb8c0d868c3c1ee4daa87ebe33a10dcd, type: 2}
-  - {fileID: 2100000, guid: 1a01e588e51d2c84eb4388a8c782f036, type: 2}
-  - {fileID: 2100000, guid: 97d62c51c55dd7f4b8a50118fa38448a, type: 2}
   - {fileID: 2100000, guid: 33f98d6e9128f024da2f61d4faeb7c9a, type: 2}
-  - {fileID: 2100000, guid: ba74cc1926a21254fb50128e6c7ed595, type: 2}
-  - {fileID: 2100000, guid: e771f1f680adf9040bc8f0cbb445e8fb, type: 2}
+  - {fileID: 2100000, guid: 702227073a27c4946b0ef367d7099a60, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
