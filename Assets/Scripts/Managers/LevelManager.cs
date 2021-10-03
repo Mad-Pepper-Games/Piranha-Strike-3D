@@ -32,6 +32,7 @@ public class LevelManager : Singleton<LevelManager>
 
     public void LoadLastLevel()
     {
+        FinishLevel();
         if (PlayerPrefs.HasKey("LastLevel"))
         {
             CurrentLevel = Levels[PlayerPrefs.GetInt("LastLevel")];

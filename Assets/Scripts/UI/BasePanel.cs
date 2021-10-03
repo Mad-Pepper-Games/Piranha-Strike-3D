@@ -43,13 +43,12 @@ public class BasePanel : MonoBehaviour
             transform.DOScale(Vector3.one, AnimationDuration).OnComplete(()=> {
                 CanvasGroup.interactable = true;
                 CanvasGroup.blocksRaycasts = true;
-
-                if (!IsActive)
-                    OnPanelActivated.Invoke();
-                IsActive = true;
-
             });
-        }else if(OpenPanelAnimationType == PanelOpenAnimationType.None)
+            if (!IsActive)
+                OnPanelActivated.Invoke();
+            IsActive = true;
+        }
+        else if(OpenPanelAnimationType == PanelOpenAnimationType.None)
         {
             CanvasGroup.interactable = true;
             CanvasGroup.blocksRaycasts = true;

@@ -12,6 +12,7 @@ public class LevelCountPanel : BasePanel
         GameManager.Instance.OnGameFinishes.AddListener(UpdateLevelValue);
         LevelManager.Instance.OnLevelStarted.AddListener(SetLevelValue);
         LevelManager.Instance.OnLevelFinished.AddListener(Deactivate);
+        UtilityManager.Instance.BossEvent.AddListener(Deactivate);
     }
 
     private void OnDisable()
@@ -20,6 +21,8 @@ public class LevelCountPanel : BasePanel
         GameManager.Instance.OnGameFinishes.RemoveListener(UpdateLevelValue);
         LevelManager.Instance.OnLevelStarted.RemoveListener(SetLevelValue);
         LevelManager.Instance.OnLevelFinished.RemoveListener(Deactivate);
+        UtilityManager.Instance.BossEvent.RemoveListener(Deactivate);
+
     }
 
     public void UpdateLevelValue(bool gameState)
