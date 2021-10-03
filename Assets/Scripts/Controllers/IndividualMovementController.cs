@@ -50,7 +50,7 @@ public class IndividualMovementController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<EatableController>())
+        if (other.GetComponent<EatableController>() || other.GetComponent<BossFightController>())
         {
             if (!AttackTargets.Contains(other.gameObject))
             {
@@ -60,7 +60,7 @@ public class IndividualMovementController : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<EatableController>())
+        if (other.GetComponent<EatableController>() || other.GetComponent<BossFightController>())
         {
             if (AttackTargets.Contains(other.gameObject))
             {
@@ -133,7 +133,8 @@ public class IndividualMovementController : MonoBehaviour
     private Vector3 InitialTarget()
     {
         Vector3 vector3=Vector3.zero;
-        vector3 = Vector3.Lerp(IndividualMovementManager.Instance.PivotObject.transform.position, centerPoint, Mathf.Clamp01(1 - (Vector3.Distance(transform.position, IndividualMovementManager.Instance.PivotObject.transform.position)) * 2 * GenericDebugManager.Instance.FloatDictionary["ClusterScatterFactor"]));
+        if (IndividualMovementManager.Instance.PivotObject)
+            vector3 = Vector3.Lerp(IndividualMovementManager.Instance.PivotObject.transform.position, centerPoint, Mathf.Clamp01(1 - (Vector3.Distance(transform.position, IndividualMovementManager.Instance.PivotObject.transform.position)) * 2 * GenericDebugManager.Instance.FloatDictionary["ClusterScatterFactor"]));
         return vector3;
     }
 

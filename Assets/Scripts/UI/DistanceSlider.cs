@@ -19,7 +19,10 @@ public class DistanceSlider : MonoBehaviour
     private void Update()
     {
         if (!LevelManager.Instance.IsLevelStarted) return;
-        dist = Vector3.Distance(IndividualMovementManager.Instance.Finish.transform.position, IndividualMovementManager.Instance.PivotObject.transform.position);
+        if (IndividualMovementManager.Instance.PivotObject && IndividualMovementManager.Instance.Finish)
+        {
+            dist = Vector3.Distance(IndividualMovementManager.Instance.Finish.transform.position, IndividualMovementManager.Instance.PivotObject.transform.position);
+        }
 
         slider.value = max - dist;
     }

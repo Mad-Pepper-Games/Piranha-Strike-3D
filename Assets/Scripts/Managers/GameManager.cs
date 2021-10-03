@@ -9,7 +9,7 @@ public class GameManager : Singleton<GameManager>
 
     public void CompleteStage(bool state)
     {
-        OnGameFinishes.Invoke(state);
+        
         if (state)
         {
             LevelManager.Instance.LoadNextLevel();
