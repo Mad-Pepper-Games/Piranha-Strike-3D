@@ -316,7 +316,7 @@ MonoBehaviour:
     - ClusterSpeedFactor
     - IndividualSpeedFactor
     - IndividualRotationFactor
-    - ClusterScatterFactor
+    - ClusterDensityFactor
     - ObstacleSpeedFactor
     - ObstacleDetectionRange
     valueData:
@@ -330,12 +330,9 @@ MonoBehaviour:
     keyData:
     - GoalObjectColor
     - ObstacleColor
-    - ClusterAreaColor
     - IndividualColor
     - NeutralIndividualColor
     valueData:
-    - serializedVersion: 2
-      rgba: 16843009
     - serializedVersion: 2
       rgba: 16843009
     - serializedVersion: 2
@@ -427,3 +424,5 @@ MonoBehaviour:
   BossEvent:
     m_PersistentCalls:
       m_Calls: []
+  MaxBossHealth: 0
+  BossHealth: 0

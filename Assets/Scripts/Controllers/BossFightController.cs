@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossFightController: MonoBehaviour
 {
@@ -9,7 +10,12 @@ public class BossFightController: MonoBehaviour
     public float Timer;
     public int CoinReward = 10;
     private Vector3 startScale;
-    public GameObject BossSkin; 
+    public GameObject BossSkin;
+
+    public UnityEvent OnDamageTaken = new UnityEvent();
+    public UnityEvent OnDeath = new UnityEvent();
+
+    public bool IsAnimationStarted;
     private void Start()
     {
         maxHealth = Health;
@@ -20,8 +26,9 @@ public class BossFightController: MonoBehaviour
     {
         if (other.GetComponent<IndividualMovementController>())
         {
-            Health -= 0.005f;
+            Health -= 0.002f;
             Health = Mathf.Clamp(Health, 0, Health);
+            OnDamageTaken.Invoke();
         }
     }
     private void FixedUpdate()
@@ -30,7 +37,7 @@ public class BossFightController: MonoBehaviour
         UtilityManager.Instance.BossHealth = Health;
         if (Health < maxHealth)
         {
-            Timer += 0.0025f;
+            Timer += 0.005f;
 
             BossSkin.transform.localScale = Vector3.Lerp(Vector3.zero , startScale, Health / maxHealth);
 
@@ -49,6 +56,7 @@ public class BossFightController: MonoBehaviour
         if (Health <= 0)
         {
             PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin", 0) + CoinReward);
+            OnDeath.Invoke();
             Destroy(gameObject); // Ölme Animasyonu vs.
         }
     }

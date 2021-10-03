@@ -13,12 +13,59 @@ public class ClusterController : MonoBehaviour
 
     public float SpeedValue = 2f;
 
-    public float ClusterAreaRange = 2f;
+    public float ClusterAreaRange = 2.5f;
 
+    public List<Vector3> IndividualPositions = new List<Vector3>();
+
+    private bool IsStarted;
+    private bool IsFinished;
     private void Start()
     {
         CalculateLastValues();
+        IsStarted = true;
         IndividualMovementManager.Instance.PivotObject = MovementPivotObject;
+    }
+    private void OnEnable()
+    {
+        IndividualMovementManager.Instance.OnIndividualAdded.AddListener(CreateIndividualPositions);
+        IndividualMovementManager.Instance.OnIndividualRemoved.AddListener(CreateIndividualPositions);
+        GenericDebugManager.Instance.OnValueChanged.AddListener(CreateIndividualPositions);
+        GameManager.Instance.OnGameFinishes.AddListener(StopWhenFinish);
+    }
+    private void OnDisable()
+    {
+        IndividualMovementManager.Instance.OnIndividualAdded.RemoveListener(CreateIndividualPositions);
+        IndividualMovementManager.Instance.OnIndividualRemoved.RemoveListener(CreateIndividualPositions);
+        GenericDebugManager.Instance.OnValueChanged.RemoveListener(CreateIndividualPositions);
+        GameManager.Instance.OnGameFinishes.RemoveListener(StopWhenFinish);
+    }
+
+    private void StopWhenFinish(bool state)
+    {
+        IsFinished = true;
+    }
+    private void CreateIndividualPositions()
+    {
+        IndividualPositions.Clear();
+        foreach (GameObject individual in IndividualMovementManager.Instance.Individuals)
+        {
+            Vector3 RandomPositionInsideAreaRange = Random.insideUnitSphere * Random.Range(Mathf.Clamp(ClusterAreaRange -GenericDebugManager.Instance.FloatDictionary["ClusterDensityFactor"],0.1f, ClusterAreaRange), ClusterAreaRange);
+            RandomPositionInsideAreaRange = new Vector3(RandomPositionInsideAreaRange.x,0, RandomPositionInsideAreaRange.z);
+            IndividualPositions.Add(RandomPositionInsideAreaRange);
+            individual.GetComponent<IndividualMovementController>().ClusterIndividualPosition = RandomPositionInsideAreaRange;
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        if (IsStarted)
+        {
+            for (int i = 0; i < IndividualPositions.Count; i++)
+            {
+                Gizmos.DrawSphere(IndividualPositions[i] + MovementPivotObject.transform.position, 0.2f);
+            }
+        }
     }
 
     public void Move()
@@ -33,7 +80,7 @@ public class ClusterController : MonoBehaviour
 
         if(InputManager.Instance.Joystick.Direction != Vector2.zero)
             MovementPivotObject.transform.localPosition += new Vector3(InputManager.Instance.Joystick.Direction.x * 0.1f,0, InputManager.Instance.Joystick.Direction.y * 0.1f);
-        MovementPivotObject.transform.localPosition = new Vector3(Mathf.Clamp(MovementPivotObject.transform.localPosition.x, -3, 3), 0, Mathf.Clamp(MovementPivotObject.transform.localPosition.z, -3, 3));
+        MovementPivotObject.transform.localPosition = new Vector3(Mathf.Clamp(MovementPivotObject.transform.localPosition.x, -4, 4), 0, Mathf.Clamp(MovementPivotObject.transform.localPosition.z, -3, 3));
     }
 
     private void CalculateLastValues()
@@ -45,7 +92,7 @@ public class ClusterController : MonoBehaviour
     private void FixedUpdate()
     {
         if (!LevelManager.Instance.IsLevelStarted) return;
-
+        if (IsFinished) return;
         MovementPivot();
         if (MovementPivotObject.transform.localPosition != Vector3.zero)
         {

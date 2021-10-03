@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class IndividualMovementManager : Singleton<IndividualMovementManager>
 {
     public GameObject PivotObject;
@@ -9,6 +9,8 @@ public class IndividualMovementManager : Singleton<IndividualMovementManager>
     public GameObject Finish;
     private bool IsEventInvoked;
 
+    public UnityEvent OnIndividualAdded = new UnityEvent();
+    public UnityEvent OnIndividualRemoved = new UnityEvent();
     private void Update()
     {
         if (!LevelManager.Instance.IsLevelStarted) return;

@@ -8,6 +8,9 @@ public class AIParticleController : MonoBehaviour
 
     private EatableController eatableController;
     private EatableController EatableController { get { return (eatableController == null) ? eatableController = GetComponent<EatableController>() : eatableController; } }
+    
+    private BossFightController bossFightController;
+    private BossFightController BossFightController { get { return (bossFightController == null) ? bossFightController = GetComponent<BossFightController>() : bossFightController; } }
 
     private GameObject BleedParticle;
 
@@ -15,14 +18,32 @@ public class AIParticleController : MonoBehaviour
     private float maxHealth;
     private void OnEnable()
     {
-        maxHealth = EatableController.Health;
-        EatableController.OnDamageTaken.AddListener(Bleed);
-        EatableController.OnDeath.AddListener(Death);
+        
+        if (EatableController)
+        {
+            maxHealth = EatableController.Health;
+            EatableController.OnDamageTaken.AddListener(Bleed);
+            EatableController.OnDeath.AddListener(Death);
+        }
+        else if(BossFightController)
+        {
+            maxHealth = BossFightController.Health;
+            BossFightController.OnDamageTaken.AddListener(Bleed);
+            BossFightController.OnDeath.AddListener(Death);
+        }
     }
     private void OnDisable()
     {
-        EatableController.OnDamageTaken.RemoveListener(Bleed);
-        EatableController.OnDeath.RemoveListener(Death);
+        if (EatableController)
+        {
+            EatableController.OnDamageTaken.RemoveListener(Bleed);
+            EatableController.OnDeath.RemoveListener(Death);
+        }
+        else if (BossFightController)
+        {
+            BossFightController.OnDamageTaken.RemoveListener(Bleed);
+            BossFightController.OnDeath.RemoveListener(Death);
+        }
     }
 
     private void Bleed()
@@ -36,7 +57,14 @@ public class AIParticleController : MonoBehaviour
         }
         else
         {
-            emissionModule.rateOverTime = (maxHealth - EatableController.Health/4)*5;
+            if (EatableController)
+            {
+                emissionModule.rateOverTime = (maxHealth - EatableController.Health / 4) * 5;
+            }
+            else
+            {
+                emissionModule.rateOverTime = (maxHealth - BossFightController.Health / 4) * 5;
+            }
         }
     }
     private void Death()

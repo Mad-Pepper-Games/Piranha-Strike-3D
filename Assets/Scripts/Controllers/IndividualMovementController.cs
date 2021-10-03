@@ -5,7 +5,7 @@ using Sirenix.OdinInspector;
 
 public class IndividualMovementController : MonoBehaviour
 {
-    private float speedValue = 1.5f;
+    private float speedValue = 2f;
     private float rotateValue = 0.9f;
     [ShowInInspector]
     private Vector3 centerPoint;
@@ -16,15 +16,23 @@ public class IndividualMovementController : MonoBehaviour
 
     private GameObject Target;
 
+    public Vector3 ClusterIndividualPosition;
+
     void OnEnable()
     {
         if (!IndividualMovementManager.Instance.Individuals.Contains(gameObject))
+        {
             IndividualMovementManager.Instance.Individuals.Add(gameObject);
+            IndividualMovementManager.Instance.OnIndividualAdded.Invoke();
+        }
     }
     void OnDisable()
     {
         if (IndividualMovementManager.Instance.Individuals.Contains(gameObject))
+        {
             IndividualMovementManager.Instance.Individuals.Remove(gameObject);
+            IndividualMovementManager.Instance.OnIndividualRemoved.Invoke();
+        }
     }
 
     public void Move()
@@ -32,20 +40,9 @@ public class IndividualMovementController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, transform.position + (transform.forward * (speedValue + (UpgradeManager.Instance.SpeedUpgrade/5) + GenericDebugManager.Instance.FloatDictionary["IndividualSpeedFactor"])), Time.fixedDeltaTime );
     }
 
-    public void CalculateCenterPoint()
+    public void RotateToClusterTargetPosition()
     {
-        centerPoint = Vector3.zero;
-
-        foreach (GameObject individual in IndividualMovementManager.Instance.Individuals)
-        {
-            centerPoint = centerPoint + individual.transform.position;
-        }
-        centerPoint = centerPoint / (IndividualMovementManager.Instance.Individuals.Count + 1);
-    }
-
-    public void RotateToCenter()
-    {
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((InitialTarget() - transform.position).normalized), Time.fixedDeltaTime * (rotateValue + GenericDebugManager.Instance.FloatDictionary["IndividualRotationFactor"]));
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((ClusterIndividualPositionTarget() - transform.position).normalized), Time.fixedDeltaTime * (rotateValue + GenericDebugManager.Instance.FloatDictionary["IndividualRotationFactor"]));
     }
 
     private void OnTriggerEnter(Collider other)
@@ -96,46 +93,14 @@ public class IndividualMovementController : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((centerPoint - transform.position).normalized), Time.fixedDeltaTime  * 1.25f * (rotateValue + GenericDebugManager.Instance.FloatDictionary["IndividualRotationFactor"]));
     }
 
-    public void StandartMovement()
+    private Vector3 ClusterIndividualPositionTarget()
     {
-        RaycastHit hit;
+        Vector3 localVector3 = Vector3.zero;
 
-        int layerMask = ~LayerMask.GetMask("Trigger");
-
-        if (Physics.Raycast(transform.position, transform.forward, out hit, (1f + GenericDebugManager.Instance.FloatDictionary["ObstacleDetectionRange"]), layerMask))
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((-hit.point + transform.position).normalized), Time.fixedDeltaTime * (rotateValue * 2 + GenericDebugManager.Instance.FloatDictionary["IndividualRotationFactor"]));
-        }
-        else
-        {
-            if (Vector3.Distance(transform.position, InitialTarget()) > 2f || transform.position.x > InitialTarget().x + 1 || transform.position.x < InitialTarget().x - 1)
-            {
-                RotateToCenter();
-            }
-            else
-            {
-                foreach (GameObject individual in IndividualMovementManager.Instance.Individuals)
-                {
-                    if (Vector3.Distance(individual.transform.position, transform.position) < 0.75f)
-                    {
-                        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((-individual.transform.position + transform.position).normalized), Time.fixedDeltaTime * (rotateValue + GenericDebugManager.Instance.FloatDictionary["IndividualRotationFactor"]));
-                        RotateToCenter();
-                    }
-                    else
-                    {
-                        RotateToCenter();
-                    }
-                }
-            }
-        }
-    }
-
-    private Vector3 InitialTarget()
-    {
-        Vector3 vector3=Vector3.zero;
         if (IndividualMovementManager.Instance.PivotObject)
-            vector3 = Vector3.Lerp(IndividualMovementManager.Instance.PivotObject.transform.position, centerPoint, Mathf.Clamp01(1 - (Vector3.Distance(transform.position, IndividualMovementManager.Instance.PivotObject.transform.position)) * 2 * GenericDebugManager.Instance.FloatDictionary["ClusterScatterFactor"]));
-        return vector3;
+            localVector3 = IndividualMovementManager.Instance.PivotObject.transform.position + ClusterIndividualPosition;
+
+        return localVector3;
     }
 
 
@@ -150,8 +115,8 @@ public class IndividualMovementController : MonoBehaviour
         }
         else
         {
-            StandartMovement();
-            CalculateCenterPoint();
+            ClusterIndividualPositionTarget();
+            RotateToClusterTargetPosition();
         }
         Move();
     }

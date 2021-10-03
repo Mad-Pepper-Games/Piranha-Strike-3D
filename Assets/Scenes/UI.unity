@@ -952,7 +952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 895}
+  m_AnchoredPosition: {x: 0, y: 1098}
   m_SizeDelta: {x: 754.9479, y: 113.765625}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &351248248
@@ -1811,7 +1811,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1023}
+  m_AnchoredPosition: {x: 0, y: 1226}
   m_SizeDelta: {x: 528.19, y: 77.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &575226407
@@ -2429,7 +2429,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.018348932, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.106202126, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3202,20 +3202,18 @@ MonoBehaviour:
   DebugPanelObjectDictionary:
     keyData:
     - ClusterRotationFactor
-    - ClusterScatterFactor
+    - ClusterDensityFactor
     - ClusterSpeedFactor
     - IndividualRotationFactor
     - IndividualSpeedFactor
     - ObstacleDetectionRange
     - ObstacleSpeedFactor
-    - ClusterAreaColor
     - GoalObjectColor
     - IndividualColor
-    - NeutralIndividualColor
     - ObstacleColor
     - CameraLookAtOffset
     - CameraPositionOffset
-    valueData: 0000000000000000000000000000000000000000000000000000000002000000020000000200000002000000020000000100000001000000
+    valueData: 000000000000000000000000000000000000000000000000000000000200000002000000020000000100000001000000
 --- !u!1 &1092962517
 GameObject:
   m_ObjectHideFlags: 0
@@ -3250,7 +3248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 1023}
+  m_AnchoredPosition: {x: 0, y: 1226}
   m_SizeDelta: {x: 759, y: 195.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1092962519
@@ -3680,7 +3678,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -133}
+  m_AnchoredPosition: {x: 0, y: -175}
   m_SizeDelta: {x: 600, y: 150}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1175391369
@@ -5248,7 +5246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -443}
+  m_AnchoredPosition: {x: 0, y: -320}
   m_SizeDelta: {x: 754.9479, y: 113.765625}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1725672473
@@ -5588,7 +5586,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884302000}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -6078,7 +6076,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -77, y: -117}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2018782943
