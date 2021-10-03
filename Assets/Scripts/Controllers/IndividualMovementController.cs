@@ -100,7 +100,9 @@ public class IndividualMovementController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, (1f + GenericDebugManager.Instance.FloatDictionary["ObstacleDetectionRange"])))
+        int layerMask = ~LayerMask.GetMask("Trigger");
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, (1f + GenericDebugManager.Instance.FloatDictionary["ObstacleDetectionRange"]), layerMask))
         {
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((-hit.point + transform.position).normalized), Time.fixedDeltaTime * (rotateValue * 2 + GenericDebugManager.Instance.FloatDictionary["IndividualRotationFactor"]));
         }
