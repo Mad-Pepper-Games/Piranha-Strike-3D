@@ -11,14 +11,12 @@ public class UpgradeManager : Singleton<UpgradeManager>
     {
         SpeedUpgrade =  PlayerPrefs.GetFloat("SpeedUpgrade");
         FishStarterCount = PlayerPrefs.GetInt("FishStarterCount");
-
     }
-        
-    private void OnDisable()
+
+    private void OnApplicationQuit()
     {
         PlayerPrefs.SetFloat("SpeedUpgrade", SpeedUpgrade);
         PlayerPrefs.SetInt("FishStarterCount", FishStarterCount);
-
     }
 }
 

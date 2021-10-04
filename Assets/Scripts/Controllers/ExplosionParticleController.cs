@@ -15,7 +15,11 @@ public class ExplosionParticleController : MonoBehaviour
             GameObject particle = Instantiate(ExplosionParticle, transform.position, Quaternion.identity);
             particle.transform.parent = transform;
             particle.transform.parent = null;
-            Destroy(individuals[Random.Range(0, individuals.Count)].gameObject);
+            //Destroy(individuals[Random.Range(0, individuals.Count)].gameObject);
+            for (int i = 0; i < Mathf.Clamp(IndividualMovementManager.Instance.Individuals.Count/4,0, IndividualMovementManager.Instance.Individuals.Count); i++)
+            {
+                Destroy(IndividualMovementManager.Instance.Individuals[i]);
+            }
             Destroy(gameObject);
         }
     }

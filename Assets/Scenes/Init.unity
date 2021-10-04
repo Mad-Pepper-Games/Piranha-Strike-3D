@@ -317,30 +317,22 @@ MonoBehaviour:
     - IndividualSpeedFactor
     - IndividualRotationFactor
     - ClusterDensityFactor
-    - ObstacleSpeedFactor
+    - ObstacleHealth
     - ObstacleDetectionRange
+    - ObstacleGoldMultiplier
+    - ObstacleBossAttackRate
     valueData:
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
-    - 1
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
+    - 0
   Color32Dictionary:
-    keyData:
-    - GoalObjectColor
-    - ObstacleColor
-    - IndividualColor
-    - NeutralIndividualColor
-    valueData:
-    - serializedVersion: 2
-      rgba: 16843009
-    - serializedVersion: 2
-      rgba: 16843009
-    - serializedVersion: 2
-      rgba: 16843009
-    - serializedVersion: 2
-      rgba: 16843009
+    keyData: []
+    valueData: []
   Vector3Dictionary:
     keyData:
     - CameraPositionOffset
@@ -366,6 +358,12 @@ MonoBehaviour:
   PivotObject: {fileID: 0}
   Individuals: []
   Finish: {fileID: 0}
+  OnIndividualAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnIndividualRemoved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &113075796
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,8 +5,8 @@ using Sirenix.OdinInspector;
 
 public class IndividualMovementController : MonoBehaviour
 {
-    private float speedValue = 2f;
-    private float rotateValue = 0.9f;
+    private float speedValue = 5.2f;
+    private float rotateValue = 4f;
     [ShowInInspector]
     private Vector3 centerPoint;
 
@@ -42,7 +42,7 @@ public class IndividualMovementController : MonoBehaviour
 
     public void RotateToClusterTargetPosition()
     {
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation((ClusterIndividualPositionTarget() - transform.position).normalized), Time.fixedDeltaTime * (rotateValue + GenericDebugManager.Instance.FloatDictionary["IndividualRotationFactor"]));
+        transform.rotation = Quaternion.LerpUnclamped(transform.rotation, Quaternion.LookRotation((ClusterIndividualPositionTarget() - transform.position).normalized), Time.fixedDeltaTime * (rotateValue + GenericDebugManager.Instance.FloatDictionary["IndividualRotationFactor"]));
     }
 
     private void OnTriggerEnter(Collider other)

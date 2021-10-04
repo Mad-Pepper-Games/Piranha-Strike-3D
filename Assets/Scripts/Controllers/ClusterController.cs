@@ -11,7 +11,7 @@ public class ClusterController : MonoBehaviour
     private Vector3 LastPivotObjectPosition;
     private Vector3 LastDirection;
 
-    public float SpeedValue = 2f;
+    public float SpeedValue = 6f;
 
     public float ClusterAreaRange = 2.5f;
 
@@ -79,8 +79,8 @@ public class ClusterController : MonoBehaviour
         MovementPivotHolder.transform.forward = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
 
         if(InputManager.Instance.Joystick.Direction != Vector2.zero)
-            MovementPivotObject.transform.localPosition += new Vector3(InputManager.Instance.Joystick.Direction.x * 0.1f,0, InputManager.Instance.Joystick.Direction.y * 0.1f);
-        MovementPivotObject.transform.localPosition = new Vector3(Mathf.Clamp(MovementPivotObject.transform.localPosition.x, -4, 4), 0, Mathf.Clamp(MovementPivotObject.transform.localPosition.z, -3, 3));
+            MovementPivotObject.transform.localPosition += new Vector3(InputManager.Instance.Joystick.Direction.x * 0.4f,0, InputManager.Instance.Joystick.Direction.y * 0.4f);
+        MovementPivotObject.transform.localPosition = new Vector3(Mathf.Clamp(MovementPivotObject.transform.localPosition.x, -8, 4), 0, Mathf.Clamp(MovementPivotObject.transform.localPosition.z, -3, 3));
     }
 
     private void CalculateLastValues()
@@ -100,7 +100,7 @@ public class ClusterController : MonoBehaviour
         }
         foreach (GameObject individual in IndividualMovementManager.Instance.Individuals)
         {
-            if(Vector3.Distance(individual.transform.position,transform.position) > 7f)
+            if(Vector3.Distance(individual.transform.position, MovementPivotObject.transform.position) > 5f + IndividualMovementManager.Instance.Individuals.Count/5)
             {
                 goto Leave;
             }

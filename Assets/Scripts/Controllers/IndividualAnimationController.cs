@@ -38,8 +38,8 @@ public class IndividualAnimationController : MonoBehaviour
             Individual.transform.DOLocalMoveY(0f, animationDuration).SetEase(Ease.InQuad);
         });
 
-        Individual.transform.DOLocalRotate(new Vector3(0, 0, 70), animationDuration).SetEase(Ease.OutQuad).OnComplete(() => {
-            Individual.transform.DOLocalRotate(new Vector3(0, 0, -70), animationDuration).SetEase(Ease.InQuad).OnComplete(() => {
+        Individual.transform.DOLocalRotate(new Vector3(-70, 0, 0), animationDuration).SetEase(Ease.OutQuad).OnComplete(() => {
+            Individual.transform.DOLocalRotate(new Vector3(70, 0, 0), animationDuration).SetEase(Ease.InQuad).OnComplete(() => {
                 Individual.transform.DOLocalRotate(new Vector3(0, 0, 0), 0.1f).SetEase(Ease.Linear).OnComplete(()=> IndividualDictionary[Individual] = false);
             });
         });
